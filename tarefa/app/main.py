@@ -1,20 +1,21 @@
 import pickle
-from fastapi import FastAPI
+from fastapi import FastAPI,Response, status
 import os
 
 app = FastAPI()
 
-@app.post('/model')
+@app.post('/model',status_code=200)
 ## Coloque seu codigo na função abaixo
-async def titanic(Sex:int,Age:float,Lifeboat: int,Pclass:int):
+async def titanic(Sex:int,Age:float,Lifeboat: int,Pclass:int,response: Response):
     with open('Titanic.pkl', 'rb') as fid: 
     
         titanic = pickle.load(fid)
-        titanic.predict([[Sex,Age,Lifeboat,Pclass]])
         
+        response.status_code = status.HTTP_201_CREATED
     return {
-	"survived": bool(titanic.predict([[Sex,Age,Lifeboat,Pclass]])),	
-	"message": "teste"
+	"survived": bool(titanic.predict([[Sex,Age,Lifeboat,Pclass]])),
+    "status": response.status_code,
+	"message": "Me Contrata Stefanini!! :)"
 }
 
 
