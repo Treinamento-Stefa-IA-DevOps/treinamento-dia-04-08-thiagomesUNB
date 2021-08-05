@@ -4,8 +4,8 @@ Repositório com exercicios e tarefas da aula de treinamento de DevOps para o pr
 
 ### Aluno
 
-Thiago Luiz de Souza Gomes  
-***Nome***:  
+
+***Nome***: Thiago Luiz de Souza Gomes  
 
 ### Autores
 
