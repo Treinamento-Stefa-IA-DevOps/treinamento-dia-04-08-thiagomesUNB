@@ -10,8 +10,6 @@ async def titanic(Sex:int,Age:float,Lifeboat: int,Pclass:int,response: Response)
     with open('model/Titanic.pkl', 'rb') as fid: 
     
         titanic = pickle.load(fid)
-        
-        response.status_code = status.HTTP_201_CREATED
 
         y_pred = bool(titanic.predict([[Sex,Age,Lifeboat,Pclass]]).tolist()[0])
 
@@ -22,7 +20,7 @@ async def titanic(Sex:int,Age:float,Lifeboat: int,Pclass:int,response: Response)
 
     return {
 	"survived": y_pred,
-    "status": response.status_code,
+    "status": 200,
 	"message": survived
 }
 
