@@ -4,7 +4,10 @@ RUN pip install pandas
 RUN pip install sklearn
 RUN pip3 install fastapi uvicorn
 
-COPY ./app /app
+COPY . /codigo
 
-WORKDIR /tarefa  
-CMD [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "15400","--reload"]
+WORKDIR /codigo 
+
+EXPOSE 80
+
+CMD [ "uvicorn", "codigo.main:app", "--host", "0.0.0.0","--port", "80","--reload"]
