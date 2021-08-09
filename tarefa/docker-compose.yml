@@ -1,9 +1,10 @@
 version: '3'
 services: 
     core_api:
-        build: .
+        build: 
+            context: ./codigo
+            dockerfile: Dockerfile
         container_name: "core-api-container"
         ports: 
-            - "8000:15400"
-        volumes: 
-            - ./app/:/app
+            - "80:80"
+        

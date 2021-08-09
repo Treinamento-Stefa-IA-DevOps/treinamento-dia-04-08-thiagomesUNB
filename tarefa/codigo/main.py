@@ -7,17 +7,17 @@ app = FastAPI()
 @app.post('/model',status_code=200)
 ## Coloque seu codigo na função abaixo
 async def titanic(Sex:int,Age:float,Lifeboat: int,Pclass:int,response: Response):
-    with open('codigo/model/Titanic.pkl', 'rb') as fid: 
+    with open('model/Titanic.pkl', 'rb') as fid: 
     
         titanic = pickle.load(fid)
         
         response.status_code = status.HTTP_201_CREATED
 
-        y_pred = bool(titanic.predict([[Sex,Age,Lifeboat,Pclass][0]]))
+        y_pred = bool(titanic.predict([[Sex,Age,Lifeboat,Pclass]]).tolist()[0])
 
         if y_pred:
             survived = 'sobreviveu'
-        else
+        else:
             survived = 'morreu'
 
     return {
